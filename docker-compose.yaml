@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  http:
+    init: true
+    image: node
+    command:
+    - /bin/sh
+    - -c
+    - 'cd /app && npm i --no-optional --no-audit && exec npm start'
+    environment:
+      PORT: 8080
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/app:cached
